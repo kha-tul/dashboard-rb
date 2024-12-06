@@ -1,0 +1,40 @@
+
+# Create first chart - Contagem de Eventos
+fig1 = go.Figure()
+fig1.add_trace(go.Bar(
+    x=events,
+    y=event_counts,
+    text=[f'{val:.2f}' for val in event_counts],  # Format to 2 decimal places
+    textposition='outside',
+    marker_color='rgb(55, 83, 109)'
+))
+
+fig1.update_layout(
+    title='Contagem de Eventos',
+    xaxis_title='Eventos',
+    yaxis_title='Contagem',
+    showlegend=False,
+    height=400
+)
+
+# Create second chart - Contagem de Eventos Únicos por Usuário
+fig2 = go.Figure()
+fig2.add_trace(go.Bar(
+    x=events,
+    y=event_counts_per_user,
+    text=[f'{val:.2f}' for val in event_counts_per_user],  # Format to 2 decimal places
+    textposition='outside',
+    marker_color='rgb(50, 205, 50)'
+))
+
+fig2.update_layout(
+    title='Contagem de Eventos Únicos por Usuário',
+    xaxis_title='Eventos',
+    yaxis_title='Contagem',
+    showlegend=False,
+    height=400
+)
+
+# Display the charts in a single column
+st.plotly_chart(fig1)
+st.plotly_chart(fig2)
